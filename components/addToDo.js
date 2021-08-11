@@ -8,23 +8,23 @@ export default function AddToDo({ submitHandler }) {
         setText(val);
     }
 
-    const clearInput = () => {
+    /* const clearInput = () => {
         setText(" ");
-    }
+    } */
 
     return (
         <View>
             <TextInput
                 style={styles.input}
                 onChangeText={(val) => changeHandler(val)}
-                value={text}
+                //value={text}
                 placeholder="new todo..."
             />
             <Button
                 title="add to do"
                 onPress={() => {
                     submitHandler(text);
-                    clearInput();
+                    //clearInput();
                 }}
                 color="coral"
             />
