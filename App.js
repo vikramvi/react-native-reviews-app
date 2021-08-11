@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from "./components/header";
+import TodoItem from './components/todoItem';
+import AddToDo from "./components/addToDo";
 
 export default function App() {
 
@@ -11,17 +13,31 @@ export default function App() {
     { text: "buy coke", key: "3" },
   ])
 
+  const pressHandler = (key) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.key != key);
+    })
+  }
+
+  const submitHandler = (text) => {
+    setTodos((prevTodos) => {
+      return [
+        { text: text, key: Math.random().toString() },
+        ...prevTodos
+      ]
+    })
+  }
 
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        {/* to-do form */}
+        <AddToDo submitHandler={submitHandler} />
         <View style={styles.list}>
           <FlatList
             data={todos}
             renderItem={({ item }) =>
-              <Text>{item.text}</Text>
+              <TodoItem item={item} pressHandler={pressHandler} />
             }
           />
         </View>
