@@ -7,7 +7,7 @@ export default function Home({ navigation }) {
 
     const [reviews, setReviews] = useState([
         { title: "test 1", rating: 5, body: "test body 1", key: "1" },
-        { title: "test 2", rating: 4, body: "test body 2", key: "2" },
+        { title: "test 2", rating: 1, body: "test body 2", key: "2" },
         { title: "test 3", rating: 3, body: "test body 3", key: "3" }
     ])
 
